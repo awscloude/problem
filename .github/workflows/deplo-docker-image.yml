@@ -33,6 +33,6 @@ jobs:
       - name: Login to GitHub Packages
         uses: actions/checkout@v3
         with:
-          repository: awscloude/myrepo
+          repository: awscloude/problem
           ref: 'master'
           token: ${{ secrets.G_TOKEN }}
