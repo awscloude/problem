@@ -34,4 +34,15 @@ jobs:
         run: |
           docker build -t ${DOCKER_USERNAME}/bdtask:${{ env.IMAGE_TAG }} -f Dockerfile .
           docker push ${DOCKER_USERNAME}/bdtask:${{ env.IMAGE_TAG }}
+
+      - id: update-image
+        uses: Charlyzzz/update-k8s-image
+        with:
+          manifest-path: path/to/deployment.yaml
+          new-image-tag: latest
+          name: my-backend
+
+       # Example of using the output
+      - id: test
+        run: curl ${{ steps.update-image.outputs.old-image-tag }}
       
