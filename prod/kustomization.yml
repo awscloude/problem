@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - bdtaskpod.yaml
 - front-svc.yaml
-#- secrest.yaml
-#images:
-#- name: ccrosscloud/bdtask
-  #newTag: v915
+images:
+- name: argo-app
+  newName: /bdtask
+  newTag: "20231221193340"
