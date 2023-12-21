@@ -3,7 +3,4 @@ kind: Kustomization
 resources:
 - deployment.yaml
 #- front-svc.yaml
-images:
-- name: front
-  newName: ccrosscloud/bdtask
-  newTag: "20231221205931"
+
