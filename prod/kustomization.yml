@@ -4,5 +4,5 @@ resources:
 - deployment.yaml
 images:
 - name: front
-  newName: ccrosscloud
-  newTag: "20231221210604"
+  newName: ccrosscloud/bdtask
+  newTag: "20231221210925"
