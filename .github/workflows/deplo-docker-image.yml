@@ -37,7 +37,7 @@ jobs:
      
       - name: Update Kubernetes resources
         env:
-          DOCKER_USERNAME: ${{ secrets.USERNAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |
           cd prod
            #kustomize edit set image argo-app=$DOCKER_USERNAME/argo-app:$GITHUB_SHA
