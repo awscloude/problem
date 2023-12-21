@@ -41,7 +41,8 @@ jobs:
         run: |
           cd prod
            #kustomize edit set image argo-app=$DOCKER_USERNAME/argo-app:$GITHUB_SHA
-           kustomize edit set image argo-app=$DOCKER_USERNAME/bdtask:${{ env.IMAGE_TAG }}
+           #kustomize edit set image bdtask=$DOCKER_USERNAME/bdtask:${{ env.IMAGE_TAG }}
+           kustomize edit set image bdtask=${{ env.IMAGE_TAG }}
            cat kustomization.yml
         
       - name: Commit files
