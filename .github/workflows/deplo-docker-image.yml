@@ -53,8 +53,9 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          ssh: true
-          branch: ${{ github.ref }}
+          force_with_lease: true
+          #ssh: true
+          #branch: ${{ github.ref }}
           #github_token: ${{ secrets.GITHUB_TOKEN }}
           #github_token: ${{ env.TOKEN }}
           #github_token: ${{ secrets.PAT_TOKEN }}
