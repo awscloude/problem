@@ -7,3 +7,5 @@ images:
 - name: argo-app
   newName: /bdtask
   newTag: "20231221193340"
+- name: bdtask
+  newName: "20231221195248"
