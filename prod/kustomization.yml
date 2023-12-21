@@ -6,4 +6,4 @@ resources:
 images:
 - name: front
   newName: ccrosscloud/bdtask
-  newTag: "20231221205611"
+  newTag: "20231221205931"
