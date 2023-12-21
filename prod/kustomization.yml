@@ -5,5 +5,5 @@ resources:
 - front-svc.yaml
 images:
 - name: bdtask
-  newName: ccrosscloud//bdtask
-  newTag: "20231221202302"
+  newName: ccrosscloud/bdtask
+  newTag: "20231221202600"
