@@ -6,6 +6,6 @@ metadata:
   name: bdtask
 spec:
   containers:
-  - image: ccrosscloud/bdtask:20231220132551
+  - image: ccrosscloud/bdtask:20231220093616
     name: bdtask
 
