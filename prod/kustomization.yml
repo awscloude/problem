@@ -1,9 +1,6 @@
-namePrefix: kustomize-
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - bdtaskpod.yaml
 - front-svc.yaml
-images:
-- name: ccrosscloud/bdtask
-  newTag: 20231221200708
+
