@@ -6,4 +6,4 @@ resources:
 images:
 - name: bdtask
   newName: /bdtask
-  newTag: "20231221204656"
+  newTag: "20231221205502"
