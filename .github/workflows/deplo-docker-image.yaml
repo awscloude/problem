@@ -38,12 +38,12 @@ jobs:
       - name: Get Latest Image Tag
         id: extract_tag
         run: |
-          TAG=$(docker images --format "{{.Tag}}" ccrosscloud/bdtask:20231221210925)
+          TAG=$(docker images --format "{{.Tag}}" ccrosscloud/bdtask:${{ env.IMAGE_TAG }})
           echo "::set-output name=tag::$TAG"
 
       - name: Update Deployment File
         run: |
-          sed -i 's|image: ccrosscloud/bdtask:20231221210925|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
+          sed -i 's|image: ${DOCKER_USERNAME}/bdtask:${{ env.IMAGE_TAG }}|image: ${DOCKER_USERNAME}/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
         
       - name: Commit files
         run: |
