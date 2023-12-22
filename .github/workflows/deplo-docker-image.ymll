@@ -34,17 +34,16 @@ jobs:
         run: |
           docker build -t ${DOCKER_USERNAME}/bdtask:${{ env.IMAGE_TAG }} -f Dockerfile .
           docker push ${DOCKER_USERNAME}/bdtask:${{ env.IMAGE_TAG }}
-     
-      - name: Update Kubernetes resources
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+
+      - name: Get Latest Image Tag
+        id: extract_tag
         run: |
-          cd prod
-           #kustomize edit set image argo-app=$DOCKER_USERNAME/argo-app:$GITHUB_SHA
-           #kustomize edit set image bdtask=$DOCKER_USERNAME/bdtask:${{ env.IMAGE_TAG }}
-           kustomize edit set image front=$DOCKER_USERNAME/bdtask:${{ env.IMAGE_TAG }}
-           #kustomize edit set image bdtask=$DOCKER_USERNAME/bdtask:${{ env.IMAGE_TAG }}
-           #cat kustomization.yml
+          TAG=$(docker images --format "{{.Tag}}" ccrosscloud/bdtask:20231221210925)
+          echo "::set-output name=tag::$TAG"
+
+      - name: Update Deployment File
+        run: |
+          sed -i 's|image: ccrosscloud/bdtask:20231221210925|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
         
       - name: Commit files
         run: |
