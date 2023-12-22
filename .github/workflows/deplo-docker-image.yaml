@@ -43,7 +43,7 @@ jobs:
 
       - name: Update Deployment File
         run: |
-          sed -i 's|image: ccrosscloud/bdtask:20231221200708|image: ${DOCKER_USERNAME}/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
+          sed -i 's|image: ccrosscloud/bdtask:20231221200708|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
         
       - name: Commit files
         run: |
