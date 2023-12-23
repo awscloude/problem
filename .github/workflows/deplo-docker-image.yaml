@@ -38,15 +38,16 @@ jobs:
       - name: Get Latest Image Tag
         id: extract_tag
         run: |
-          #TAG=$(docker images --format "{{.Tag}}" ccrosscloud/bdtask:${{ env.IMAGE_TAG }})
-          #echo "::set-output name=tag::$TAG"
-          IMAGE_TAG=$(grep 'image:' prod/deployment.yaml | awk -F': ' '{print $NF}')
-          echo "::set-output name=image_tag::$IMAGE_TAG"
+          TAG=$(docker images --format "{{.Tag}}" ccrosscloud/bdtask:${{ env.IMAGE_TAG }})
+          echo "::set-output name=tag::$TAG"
+          #IMAGE_TAG=$(grep 'image:' prod/deployment.yaml | awk -F': ' '{print $NF}')
+          #echo "::set-output name=image_tag::$IMAGE_TAG"
 
       - name: Update Deployment File
         run: |
-          #sed -i 's|image: ccrosscloud/bdtask:20231221200708|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
-          sed -i "s|$IMAGE_TAG|${{ steps.extract-tag.outputs.image_tag }}|g" prod/deployment.yaml
+          sed -i 's|image: ccrosscloud/bdtask: .*|image: ccrosscloud/bdtask: ${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
+          #sed -i "s|$IMAGE_TAG|${{ steps.extract-tag.outputs.image_tag }}|g" prod/deployment.yaml
+          #sed -i 's|APP_VERSION:.*|APP_VERSION: '${{ github.sha }}'|' values.yaml
         
       - name: Commit files
         run: |
