@@ -45,7 +45,7 @@ jobs:
 
       - name: Update Deployment File
         run: |
-          sed -i 's|image: ccrosscloud/bdtask: .*|image: ccrosscloud/bdtask: ${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
+          sed -i 's|image: ccrosscloud/bdtask:.*|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
           #sed -i "s|$IMAGE_TAG|${{ steps.extract-tag.outputs.image_tag }}|g" prod/deployment.yaml
           #sed -i 's|APP_VERSION:.*|APP_VERSION: '${{ github.sha }}'|' values.yaml
         
