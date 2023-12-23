@@ -46,7 +46,7 @@ jobs:
       - name: Update Deployment File
         run: |
           #sed -i 's|image: ccrosscloud/bdtask:20231221200708|image: ccrosscloud/bdtask:${{ steps.extract_tag.outputs.tag }}|g' prod/deployment.yaml
-          sed -i "s|{{OLD_IMAGE_TAG}}|${{ steps.extract-tag.outputs.image_tag }}|g" prod/deployment.yaml
+          sed -i "s|$IMAGE_TAG|${{ steps.extract-tag.outputs.image_tag }}|g" prod/deployment.yaml
         
       - name: Commit files
         run: |
