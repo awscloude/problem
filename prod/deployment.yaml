@@ -15,4 +15,4 @@ spec:
         app: front
     spec:
       containers:
-      - image: ccrosscloud/bdtask: 20231223183817
+      - image: ccrosscloud/bdtask:20231223184049
