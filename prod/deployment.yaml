@@ -16,3 +16,4 @@ spec:
     spec:
       containers:
       - image: ccrosscloud/bdtask:20231223184258
+        name: "bdtask"
