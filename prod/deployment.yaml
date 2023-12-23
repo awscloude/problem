@@ -15,4 +15,4 @@ spec:
         app: front
     spec:
       containers:
-      - image: ccrosscloud/bdtask: {{OLD_IMAGE_TAG}}
+      - image: ccrosscloud/bdtask: 
